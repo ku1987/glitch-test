@@ -8,16 +8,15 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 const app = express();
-const bodyParser = require("body-parser");
 
 const csurf = require("csurf");
 const indexRouter = require("./src/routes/index");
 const giftRouter = require("./src/routes/gift");
 const { sendEmail } = require("./src/batch/email");
 
-app.use(bodyParser.urlencoded());
-app.use(bodyParser.json());
-app.use(morgan());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(morgan("combined"));
 app.use(cookieParser());
 app.use(
   session({
