@@ -13,6 +13,7 @@ const csurf = require("csurf");
 const indexRouter = require("./src/routes/index");
 const giftRouter = require("./src/routes/gift");
 const { sendEmail } = require("./src/batch/email");
+const { csurfHandling } = require("./src/middlewares/csurf");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,6 +45,8 @@ app.set("views", "./views");
 
 app.use("/", indexRouter);
 app.use("/gifts", giftRouter);
+
+app.use(csurfHandling);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT || 3000, () => {
