@@ -2,18 +2,18 @@
 // where your node app starts
 const fs = require("fs");
 
-const express = require("express");
-const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+const csurf = require("csurf");
+const express = require("express");
 const session = require("express-session");
+const morgan = require("morgan");
 
 const app = express();
 
-const csurf = require("csurf");
-const indexRouter = require("./src/routes/index");
-const giftRouter = require("./src/routes/gift");
 const { sendEmail } = require("./src/batch/email");
 const { csurfHandling } = require("./src/middlewares/csurf");
+const giftRouter = require("./src/routes/gift");
+const indexRouter = require("./src/routes/index");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
