@@ -9,6 +9,7 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
+  "plugins": ["import"],
   "rules": {
     "no-console": "off",
     "import/order": [
